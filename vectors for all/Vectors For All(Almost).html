@@ -1,0 +1,542 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>Vectors For All(Almost)</title>
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+</head>
+<body>
+<h2 id="toc_0">近乎通用的VectorDrawable</h2>
+
+<blockquote>
+<ul>
+<li>原文链接 : <a href="https://blog.stylingandroid.com/vectors-for-all-almost/?utm_source=Android+Weekly&amp;utm_campaign=0903213dbd-Android_Weekly_175&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-0903213dbd-337955857">Vectors For All (almost)</a></li>
+<li>原文作者 : <a href="https://blog.stylingandroid.com/">Mark Allison</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn">开发技术前线 www.devtf.cn。本译文已授权开发者头条（链接：http://toutiao.io/download）享有独家转载权，未经允许，不得转载!</a></li>
+<li>译者 : <a href="https://github.com/DroidWorkerLYF">DroidWorkerLYF</a></li>
+<li>校对者: <a href="github%E9%93%BE%E6%8E%A5">这里校对者的github用户名</a></li>
+<li>状态 :  未完成</li>
+</ul>
+</blockquote>
+
+<p>PS：这标题我翻译的吧，感觉各位还是意会吧，咱们主要看文章  </p>
+
+<p>Regular readers of Styling Android will know of my love of
+<em>VectorDrawable</em> and <em>AnimatedVectorDrawable</em>. While (at the time of
+writing) we’re still waiting for <em>VectorDrawableCompat</em> so we can only
+use them on API 21 (Lollipop) and later. However, the release of Android
+Studio 1.4 has just added some backwards compatibility to the build
+tools so we can actually begin to use <em>VectorDrawable</em> for pre-Lollipop.
+In this article we’ll take a look at how this works.  </p>
+
+<p><a href="https://blog.stylingandroid.com/">Styling Android</a>的读者们将会了解我对<em>VectorDrawable</em>和<em>AnimatedVectorDrawable</em>的喜爱。在我写这篇文章的时候,我们仍然在等待<em>VectorDrawableCompat</em>来支持老版本的系统,所以目前只能在API 21(Lollipop)及之后的系统上使用它们。不过Android Studio 1.4版本已经为编译工具加入了一些向后兼容的能力,使得我们可以开始在Lollipop之前的系统上使用<em>VectorDrawable</em>。在这篇文章中,让我们看看这是如何实现的。</p>
+
+<p>Before we begin let’s have a quick recap of what <em>VectorDrawable</em> is.
+Essentially it is an Android wrapper around SVG path data. SVG paths are
+a way of specifying complex graphical elements in a declarative way.
+They are particularly suited to line drawings and vector graphics, and
+unsuitable for photographic images. Traditionally in Android we have
+<em>ShapeDrawable</em> where we can do <a href="/more-vector-drawables-part-2/">some basic
+stuff</a> but often we have to convert
+vector and line graphics in to bitmaps at various pixel densities in
+order to use them.<br>
+在我们开始之前,让我们先来简单了解一下什么是<em>VectorDrawable</em>。本质上来说就是对SVG path数据在Android上的封装。SVG path是通过声明来描述复杂图形元素的方式。SVG path适合于线条的绘制和矢量图形,不适合图片。之前在Android上我们可以使用<em>ShapeDrawable</em>做一些<a href="https://blog.stylingandroid.com/more-vector-drawables-part-2/">基本的东西</a>,但是我们经常需要将矢量图和线条转换成位图来在各种各样的像素密度上使用他们。</p>
+
+<p>Android Studio 1.4 introduces the ability to import SVG graphics into
+Android Studio and converts them automatically to <em>VectorDrawable</em>.
+These can be icons from the <a href="https://www.google.com/design/icons/">material icons
+pack</a> or standalone SVG files.
+Importing material icons works flawlessly and provides a large and rich
+set of icons. However, importing standalone SVG files can be rather more
+problematic. The reason for this is that the <em>VectorDrawable</em> format
+only supports a subset of SVG and is missing features such as gradient
+and pattern fills, local IRI references (the ability to give an element
+a unique reference and re-use it within the SVG via that reference), and
+transformations – which are all commonly used.  </p>
+
+<p>Android Studio 1.4带来了导入SVG的能力并且可以自动将它们转为<em>VectorDrawable</em>。我们可以导入<a href="https://www.google.com/design/icons/">material icons
+pack</a>中的图标或者是单独的SVG文件。导入material icons pack的图标执行的非常好,并且有大量丰富的资源可以选择。然而导入单独的SVG文件相比之下就会有很多问题。原因就是<em>VectorDrawable</em>只支持SVG的一个子集,缺少了常用的gradient,pattern fills,local IRI references(赋予元素唯一的引用并且在SVG中通过这个引用来复用此元素)和transformations功能。</p>
+
+<p>For example, even a relatively simple image such as the official <a href="http://www.w3.org/2009/08/svg-logos.html">SVG
+logo</a> (below) fails to import
+because it uses local IRI references:<br>
+举个例子,导入官方的<a href="http://www.w3.org/2009/08/svg-logos.html">SVG logo</a>这种相对简单的图片(如下图)都会失败,因为缺少了对local IRI references的支持。</p>
+
+<p><img src="https://github.com/DroidWorkerLYF/Translate/blob/master/vectors%20for%20all/1.png?raw=true" alt="svg\_logo"></p>
+
+<p>It’s currently unclear whether these omissions are for performance
+reasons (for example, gradients can be complex to render) or are future
+developments.<br>
+现在还不清楚这些遗漏的功能是因为出于对性能问题的考虑(比如gradients的渲染就很复杂)还是在开发中。</p>
+
+<p>With an understanding the SVG format (which is beyond the scope of this
+article) it is possible to manually tweak the logo to remove the local
+IRI references and this is identical to the one above:<br>
+通过对SVG格式的了解(超出了这篇文章的讨论范围),我们可以手动调整上面的图片,移除local IRI references.调整过的下图和上面SVG logo效果是相同的。</p>
+
+<p><img src="https://github.com/DroidWorkerLYF/Translate/blob/master/vectors%20for%20all/2.png?raw=true" alt="svg\_logo2"></p>
+
+<p>This still does not import and the error message of “premature end of
+file” gives little clue where the problem lies. Thanks to a suggestion
+from <a href="https://plus.google.com/+WojtekKalicinski">Wojtek Kaliciński</a> I
+changed the width and height from percentage values to absolute values
+and the import now worked. However because translations are not
+supported all of the elements were positioned badly:<br>
+但这仍然不能导入到Android Studio中,提示的错误信息是“premature end of file”.感谢<a href="https://plus.google.com/+WojtekKalicinski">Wojtek Kaliciński</a>的建议,我将宽高从百分比修改为了绝对数值之后可以导入了。然而因为translations也是不支持的,所以所有的元素都不能正确的布局(如下图):</p>
+
+<p><img src="https://github.com/DroidWorkerLYF/Translate/blob/master/vectors%20for%20all/3.png?raw=true" alt="svg\_logo2"></p>
+
+<p>By manually applying the all of the translation and rotation
+transformations from the original file (by wrapping <code>&lt;path&gt;</code> elements in <code>&lt;group&gt;</code>
+elements which support transformations) I was able to actually get the
+official SVG logo to import and render correctly as a <em>VectorDrawable</em>
+on Marshmallow:<br>
+通过手动调整源文件中所有的translation和rotation transformations(使用支持transformations的<code>&lt;group&gt;</code>元素嵌套<code>&lt;path&gt;</code>),我终于可以把官方的SVG logo导入了并且在Marshmallow(Android 6.0)上能被<em>VectorDrawable</em>正确的渲染:</p>
+
+<p><img src="https://github.com/DroidWorkerLYF/Translate/blob/master/vectors%20for%20all/4.png?raw=true" alt="SVGLogo"></p>
+
+<p>There is a <a href="http://inloop.github.io/svg2android/">conversion tool</a> by
+Juraj Novák which will convert SVG directly to <em>VectorDrawable</em>. It has
+many of the same restrictions of not handling gradients and local IRI
+references, but does a much better job of converting my hand-tweaked
+SVG. It was not thrown by having percentage width and height values, and
+it has an experimental mode to apply transformations which worked well
+in this case. But the need to manually convert the local IRI references
+still required hand-tweaking of the raw SVG files.<br>
+有一个Juraj Novák制作的<a href="http://inloop.github.io/svg2android/">方便的工具</a>可以将SVG直接转换成<em>VectorDrawable</em>.但它也有着很多和导入一样的限制,不能处理gradients和local IRI references,但是在转换我手动调整过的SVG上表现的更好.转换工具没有因为使用百分比的宽高值而处理失败,而且还有一个实验模式来应用transformations并且工作正常.但是仍然需要手动调整原始SVG文件的local IRI references.</p>
+
+<p>By dropping this in our <code>res/drawable</code> folder we can now reference it as
+any drawable:<br>
+把处理后的图片放到<code>res/drawable</code>文件夹下,我们就可以把它当做drawable引用了.</p>
+
+<pre><code>res/layout/activity\_main.xml
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+    android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+    tools:context=&quot;.MainActivity&quot;&gt; 
+
+    &lt;ImageView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:contentDescription=&quot;@null&quot; 
+        android:src=&quot;@drawable/svg_logo2&quot;
+    /&gt; 
+&lt;/RelativeLayout&gt;</code></pre>
+
+<p>Provided that we are using gradle plugin 1.4.0 or later (at the time of
+writing this isn’t released but <code>1.4.0-beta6</code> does the trick) this will
+now work back to API 1!<br>
+假设我们正在使用gradle plugin 1.4.0 或者更新的版本(写文章时1.4.0还没有发布,不过<code>1.4.0-beta6</code>同样可以),就可以让<em>VectorDrawable</em>兼容到API 1!</p>
+
+<p>So what’s happening? If we take a look in the generated code in the
+build folder it becomes obvious:<br>
+所以究竟发生了什么呢?我们看一下build文件夹下生成的代码就很清楚了:</p>
+
+<p><img src="https://github.com/DroidWorkerLYF/Translate/blob/master/vectors%20for%20all/5.png?raw=true" alt="Screen Shot 2015-10-03 at 15.20.33"></p>
+
+<p>For API 21 and later the XML vector drawable that we imported is used,
+but for earlier devices a PNG of the vector drawable is used instead.<br>
+在API 21及之后的版本会使用我们导入的XML vector drawable,而之前的版本会使用PNG格式图片代替.</p>
+
+<p>But what if we decide that we don’t need all of these densities and are
+concerned about the increased size of our APK as a result of this? We
+can actually control which densities will be generated using the
+<code>generatedDensities</code> property of the build flavor:<br>
+但如果我们不需要对应全部的分辨率而更关注由此导致APK增加的大小呢?我们可以通过build flavor的<code>generatedDensities</code>属性来控制需要生成的分辨率。</p>
+
+<pre><code>app/build.gradle
+
+apply plugin: &#39;com.android.application&#39;
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.0.1&quot;
+    defaultConfig {
+        applicationId &quot;com.stylingandroid.vectors4all&quot;
+        minSdkVersion 7 targetSdkVersion 23
+        versionCode 1
+        versionName &quot;1.0&quot;
+        generatedDensities = [&#39;mdpi&#39;, &#39;hdpi&#39;]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+        }
+    }
+}
+dependencies {
+    compile fileTree(dir: &#39;libs&#39;, include: [&#39;\*.jar&#39;])
+    testCompile &#39;junit:junit:4.12&#39; compile
+    &#39;com.android.support:appcompat-v7:23.0.1&#39;
+}</code></pre>
+
+<p>If we now build (remember to clean first to remove the resources that
+were generated by previous builds) we can see this only creates the
+densities we’ve specified:<br>
+如果我们现在build一下（记得先clean来清除之前生成的资源），就会发现只生成了我们指定分辨率的资源：</p>
+
+<p><img src="https://github.com/DroidWorkerLYF/Translate/blob/master/vectors%20for%20all/6.png?raw=true" alt="Screen Shot 2015-10-03 at 15.27.08"></p>
+
+<p>So, let’s now actually take a look at what is produced in the png
+representation:<br>
+那么，现在让我们来看看实际生成的png:</p>
+
+<p><img src="https://github.com/DroidWorkerLYF/Translate/blob/master/vectors%20for%20all/7.png?raw=true" alt="svg\_logo2"></p>
+
+<p>This is essentially the same as how the imported SVG was rendered before
+I manually added the missing transformations. I should mention that
+there <strong>is</strong> a lint warning which indicates that <code>&lt;group&gt;</code> elements are not
+supported for raster image generation, but that does not detract from
+the fact that <em>VectorDrawable</em> is an Android-specific format so not
+fully supporting it seems baffling.<br>
+这和我手动添加缺少的transformations之前导入的SVG渲染出的一样。我之前本该提到lint有一个警告指出<code>&lt;group&gt;</code>元素是不支持光栅化的，但是这不影响<em>VectorDrawable</em>是一个Android特定格式的事实，因此没有完整的支持它似乎令人费解。</p>
+
+<p>We now beginning to understand why transformations are not supported by
+the import tool – because transformations on <em>VectorDrawable</em> <code>&lt;group&gt;</code>
+elements is not supported when converting <em>VectorDrawable</em> to a raster
+image for backwards compatibility. This would appear to be a major
+omission: Totally valid <em>VectorDrawable</em> assets which render perfectly
+under Lollipop and later do not actually render correctly when converted
+to PNG.<br>
+现在我们开始理解为什么transformations不被导入工具支持了，因为为了向后兼容而将<em>VectorDrawable</em>转换成光栅化图片时<code>&lt;group&gt;</code>中的transformations是不支持转换的。这应该是一个主要的遗漏：在Lollipop以及之后的系统上可以完美渲染的有效的<em>VectorDrawable</em>资源转换成PNG图片就不正确了。</p>
+
+<p>To, to summarise: If you use these new tools to import assets from the
+material icons library they work flawlessly. However, it seems
+misleading to even claim that the import tool is actually capable of
+importing SVG when it only supports a very limited subset, and will not
+correctly import most real-world SVG files. Moreover the lack of support
+even for the full <em>VectorDrawable</em> specification in the VectorDrawable
+-&gt; raster image conversion makes the implementation feel unfinished and
+not really ready for general use.<br>
+总结下：如果你使用这些新工具从material icons library中导入资源，那么一切都很完美。<br>
+<img src="https://github.com/DroidWorkerLYF/Translate/blob/master/vectors%20for%20all/perfect.gif?raw=true" alt="perfect"><br>
+然而，声称导入工具可以导入SVG文件则是一种误导，因为它支持非常有限的SVG的子集，并且无法正确导入大部分实际真正使用的SVG文件。此外，缺少对<em>VectorDrawable</em>转换为光栅化视图的完整支持让人感觉这项功能没有真正完成，没有准备好投入使用。</p>
+
+<p>For the level of manual tweaking that I was required to do to even get
+the official SVG logo to even be converted to a <em>VectorDrawable</em> by the
+import tool it would not have required much more work to manually
+convert it to a <em>VectorDrawable</em> and completely bypass the import tool
+altogether. Although I would still be required to manually apply my
+transformations to all of the coordinates within the SVG pathData
+elements in order to manually apply the necessary transformations.<br>
+使用导入工具配合手动调整将官方的SVG logo转成<em>VectorDrawable</em>并没有比我纯手动调整需要更多工作。尽管我仍然需要自己调整SVG pathData中的所有transformations的坐标，来实现必要的transformations。</p>
+
+<p>Let’s hope that some of these issues are addressed soon so that these
+new potentially very useful new tools begin to fulfil some of their
+promise.<br>
+希望这些问题中的一些会被尽快解决，这样这些新的潜在的实用工具就可以开始实现他们的用处了。</p>
+
+<p>The source code for this article is available<br>
+此文的源码
+<a href="https://github.com/StylingAndroid/Vectors4All/tree/master">here</a>.</p>
+
+
+</body>
+
+</html>
